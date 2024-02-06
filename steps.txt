@@ -1,0 +1,1 @@
+1. run the chatbot on nodejs server and test it using postman
