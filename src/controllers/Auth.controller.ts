@@ -1,33 +1,78 @@
+import { DocumentType } from "@typegoose/typegoose";
 import { Request, Response } from "express";
-const User = require("../models/Auth.model");
-const passport = require("passport");
+import { get } from "lodash";
+import { User } from "../models/User.model";
+import { CreateSessionInput } from "../schemas/Auth.schema";
+import {
+  findSessionById,
+  signAccessToken,
+  signRefreshToken,
+} from "../services/Auth.service";
+import { findUserByEmail, findUserById } from "../services/User.service";
+import { verifyJwt } from "../utils/jwt";
 
-export const signup = async (req: Request, res: Response) => {
-  const { username, password, role } = req.body;
+export async function createSessionHandler(
+  req: Request<{}, {}, CreateSessionInput>,
+  res: Response
+) {
+  const message = "Invalid email or password";
+  const { email, password } = req.body;
 
-  // Validate user data
-  // ...
+  const user = await findUserByEmail(email);
 
-  // Create new user with role
-  const newUser = new User({ username, password, role });
-
-  // Save user to database
-  try {
-    await newUser.save();
-    req.login(newUser, (err) => {
-      if (err) {
-        return res.status(500).send("Error logging in");
-      }
-      res.redirect("/"); // Redirect to home page
-    });
-  } catch (err) {
-    // Handle errors
-    res.status(500).send("Error creating user");
+  if (!user) {
+    return res.send(message);
   }
-};
 
-export const login = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-  failureFlash: true,
-});
+  if (!user.verified) {
+    return res.send("Please verify your email");
+  }
+
+  const isValid = await user.validatePassword(password);
+
+  if (!isValid) {
+    return res.send(message);
+  }
+
+  // sign a access token
+  const accessToken = signAccessToken(user);
+
+  // sign a refresh token
+  const refreshToken = await signRefreshToken({ userId: user._id.toString() });
+
+  // send the tokens
+
+  return res.send({
+    accessToken,
+    refreshToken,
+  });
+}
+
+export async function refreshAccessTokenHandler(req: Request, res: Response) {
+  const refreshToken = get(req.headers, "x-refresh") as string;
+
+  const decoded = verifyJwt<{ session: string }>(
+    refreshToken,
+    "refreshTokenPublicKey"
+  );
+
+  if (!decoded) {
+    return res.status(401).send("Could not refresh access token");
+  }
+
+  const session = await findSessionById(decoded.session);
+
+  if (!session || !session.valid) {
+    return res.status(401).send("Could not refresh access token");
+  }
+
+  const user = await findUserById(String(session.user));
+
+  if (!user) {
+    return res.status(401).send("Could not refresh access token");
+  }
+
+  const accessToken = signAccessToken(user);
+
+  return res.send({ accessToken });
+}
