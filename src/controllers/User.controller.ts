@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import {
   CreateUserInput,
   ForgotPasswordInput,
@@ -91,7 +91,7 @@ export async function forgotPasswordHandler(
     return res.send("User is not verified");
   }
 
-  const passwordResetCode = nanoid();
+  const passwordResetCode = "1234"; // nanoid(6);
 
   user.passwordResetCode = passwordResetCode;
 

@@ -17,7 +17,7 @@ import {
 
 const router = express.Router();
 
-router.post("", validateResource(createUserSchema), createUserHandler);
+router.post("/register", validateResource(createUserSchema), createUserHandler);
 
 router.post(
   "/verify/:id/:verificationCode",

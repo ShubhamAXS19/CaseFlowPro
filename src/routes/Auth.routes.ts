@@ -8,12 +8,8 @@ import { createSessionSchema } from "../schemas/Auth.schema";
 
 const router = express.Router();
 
-router.post(
-  "/api/sessions",
-  validateResource(createSessionSchema),
-  createSessionHandler
-);
+router.post("/", validateResource(createSessionSchema), createSessionHandler);
 
-router.post("/api/sessions/refresh", refreshAccessTokenHandler);
+router.post("/refresh", refreshAccessTokenHandler);
 
 export default router;

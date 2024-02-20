@@ -3,7 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("dotenv").config();
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const express_1 = __importDefault(require("express"));
 const logger_1 = __importDefault(require("./utils/logger"));
 const Auth_routes_1 = __importDefault(require("./routes/Auth.routes"));
@@ -19,7 +20,7 @@ mongoose_1.default
     .connect(process.env.MONGODB_URI)
     .then(() => {
     logger_1.default.info("Connected to MongoDB");
-    console.log("Connected to MongoDB");
+    // console.log("Connected to MongoDB");
 })
     .catch((err) => {
     // log.error(err);
@@ -27,8 +28,8 @@ mongoose_1.default
     process.exit(1);
 });
 app.listen(process.env.PORT, () => {
-    logger_1.default.info(`App started at http://localhost:${process.env.PORT}`);
-    console.log(`App started at http://localhost:${process.env.PORT}`);
+    logger_1.default.info(`App started at http:/localhost:${process.env.PORT}`);
+    // console.log(`App started at http:/localhost:${process.env.PORT}`);
 });
 console.log("Hello World");
 console.log(process.env);

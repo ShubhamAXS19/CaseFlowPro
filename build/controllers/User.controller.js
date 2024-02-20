@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCurrentUserHandler = exports.resetPasswordHandler = exports.forgotPasswordHandler = exports.verifyUserHandler = exports.createUserHandler = void 0;
-const nanoid_1 = require("nanoid");
 const User_service_1 = require("../services/User.service");
 const logger_1 = __importDefault(require("../utils/logger"));
 const mailer_1 = __importDefault(require("../utils/mailer"));
@@ -74,7 +73,7 @@ function forgotPasswordHandler(req, res) {
         if (!user.verified) {
             return res.send("User is not verified");
         }
-        const passwordResetCode = (0, nanoid_1.nanoid)();
+        const passwordResetCode = "1234"; // nanoid(6);
         user.passwordResetCode = passwordResetCode;
         yield user.save();
         yield (0, mailer_1.default)({
