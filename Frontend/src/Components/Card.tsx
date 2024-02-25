@@ -16,10 +16,10 @@ const Card = ({ cardInfo }: { cardInfo: CardInfoObject }) => {
     <div className='card-container'>
       {Object.entries(cardInfo).map(([key, value]) => (
         <div className='card' key={key}>
-          <p>{value.icon}</p>
+          <h1>{value.icon}</h1>
+          <h3>{value.cardname}</h3>
           <p>{value.info}</p>
-          <p>{value.cardname}</p>
-          <button className="card-btn">{value.button}</button>
+          {/* <button className="card-btn">{value.button}</button> */}
         </div>
       ))}
     </div>

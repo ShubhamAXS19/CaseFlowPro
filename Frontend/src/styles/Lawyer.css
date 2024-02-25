@@ -1,4 +1,4 @@
-.homepage {
+.lawyer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,25 +6,25 @@
   padding-top: 2vh;
 }
 
-.homepage h2 {
+.lawyer h2 {
   font-size: 3vh;
   color: rgba(0, 0, 0, 0.7);
 }
-.home-left {
-  max-width: 20%;
+.lawyer-left {
+  max-width: 45vh;
 }
-.home-left p {
+.lawyer-left p {
   margin-top: 1vh;
   margin-bottom: 2vh;
   font-size: 2.5vh;
   color: rgba(0, 0, 0, 0.5);
 }
-.home-left-middle {
+.lawyer-left-middle {
   display: flex;
   align-items: center;
 }
 
-.home-left-middle span {
+.lawyer-left-middle span {
   display: inline-block;
   width: 10px;
   height: 10vh;
@@ -32,46 +32,35 @@
   background-color: blue;
 }
 
-.home-left-middle h1 {
+.lawyer-left-middle h1 {
   font-size: 5.5vh;
   margin-top: 2vh;
   margin-bottom: 1vh;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.home-right {
+.lawyer-right {
   width: 50%;
 }
 
-.home-right img {
+.lawyer-right img {
   width: 100%;
   height: auto;
   margin-left: 2vw;
   border-radius: 2vh;
 }
 
-.approve {
-  background-color: #b8c0ff;
-  height: 20vh;
-  width: 100%;
-  /* border-radius: ; */
-}
-
-.approve h1 {
-  text-align: center;
-  font-size: 4vh;
-}
-
-.services-provide {
-  background-color: #b7e4c7;
+.prac-area {
+  /* background-color: #e9ecef; */
+  background-color: rgba(233, 236, 239, 0.6);
   padding-top: 5vh;
+  margin-top: 3vh;
   padding-bottom: 5vh;
   margin-bottom: 3vh;
   color: rgba(0, 0, 0, 0.9);
 }
 
-.services-provide h2 {
-  color: rgba(0, 0, 0, 0.8);
+.prac-area h2 {
   text-align: center;
   margin-bottom: 2vh;
 }

@@ -5,6 +5,7 @@ import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Lawyer from './Pages/lawyer';
 import Psych from './Pages/psych';
+import Continue from './Pages/Continue';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/continue" element={<Continue />} />
         <Route path="/seek-legal-assistance" element={<Lawyer />} />
         <Route path="/seek-mental-assistance" element={<Psych />} />
       </Routes>

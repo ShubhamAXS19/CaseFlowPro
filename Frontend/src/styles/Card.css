@@ -1,13 +1,29 @@
 .card-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .card {
-  /* Add styling for individual card */
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
+  background-color: #fffffc;
+  padding: 3vh 4vh;
+  margin: 3vh 5vh;
+  width: 30vh;
+  height: 20vh;
+  border-radius: 1vh;
+}
+
+.card:hover {
+  background-color: rgba(251, 133, 0, 0.8);
+  transition: 0.3s ease-in;
+}
+
+.card p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2vh;
+}
+
+.card h3 {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .card-btn {

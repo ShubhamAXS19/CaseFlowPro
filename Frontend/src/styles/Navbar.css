@@ -8,8 +8,10 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Apply a shadow */
 }
 
-.nav-logo {
+.nav-logo img {
   margin-right: auto;
+  height: 8vh; /* Set height to 4 viewport height */
+  width: 10vh; /* Set width to 2 viewport height */
 }
 
 .nav-list {

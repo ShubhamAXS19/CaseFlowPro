@@ -8,10 +8,11 @@
 }
 
 .signup-form-container h2 {
-  font-size: 5em;
+  font-size: 5vh;
   color: #fff;
   text-align: center;
   color: #023047;
+  margin-bottom: 3vh;
 }
 
 .signup-form-container-right {
@@ -20,14 +21,13 @@
   align-items: center;
   justify-content: center;
   background-color: #023047;
-  border-radius: 3rem;
   padding: 0 5vw;
 }
 
 .signup-form-container-right img {
   max-width: 50%;
   height: auto;
-  border-radius: 2rem;
+  border-radius: 2vh;
 }
 
 .signup-form-container-right form {
@@ -37,7 +37,7 @@
 .signup-form-container-right form p {
   color: #fff;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2.5vh;
 }
 .signup-form-container-right form a {
   color: #fff;
@@ -51,26 +51,25 @@
 }
 
 .form-group {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5vh;
 }
 
 .form-group input {
-  width: 115%;
-  padding: 1.5rem;
+  width: 100%;
+  padding: 1.5vh;
   font-size: 2vh;
-  border-radius: 2rem;
+  border-radius: 2vh;
 }
 
 button {
-  padding: 2rem 3rem;
-
-  font-size: 3rem;
-
+  padding: 2vh 6vh;
+  font-size: 3vh;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 2rem;
+  border-radius: 3vh;
   cursor: pointer;
+  margin-bottom: 2vh;
 }
 
 button:hover {
